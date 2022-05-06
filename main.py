@@ -1,6 +1,7 @@
 # pip install pymongo
 # pip install matplotlib
 # pip install numpy
+# pip install "pymongo[srv]"
 import random
 import string
 import datetime
@@ -16,8 +17,8 @@ from connections import LOCAL_HOST, LOCAL_PORT, DOCKER_HOST, DOCKER_PORT, CLOUD_
 
 CONNECTION = {
     "local": MongoClient(LOCAL_HOST, LOCAL_PORT),
-    # "docker": MongoClient(DOCKER_HOST, DOCKER_PORT),
-    # "cloud": MongoClient(CLOUD_CONNECTION),
+    "docker": MongoClient(DOCKER_HOST, DOCKER_PORT),
+    "cloud": MongoClient(CLOUD_CONNECTION),
 }
 
 NUM_REPEATS = {
@@ -335,8 +336,8 @@ def delete_operation(db, comments_data, num_repeats):
     time_for_delete_bulk_mean = np.array(time_for_delete_bulk_mean).mean(axis=0)
 
     res = [(range(1, len(time_for_delete_one_mean) + 1), time_for_delete_one_mean),
-           (range(1, NUM_COMMENTS + 2, 100), time_for_delete_many_mean),
-           (range(1, NUM_COMMENTS + 2, 100), time_for_delete_bulk_mean)]
+           (range(1, NUM_COMMENTS + 2, 500), time_for_delete_many_mean),
+           (range(1, NUM_COMMENTS + 2, 500), time_for_delete_bulk_mean)]
     return res
 
 
