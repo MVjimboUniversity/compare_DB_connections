@@ -1,4 +1,7 @@
 # compare_DB_connections
+Link to the video: https://disk.yandex.ru/i/PXSxcfqnl9H22Q
+
+
 To start the program, run the command
 ```
 python main.py <operation>
